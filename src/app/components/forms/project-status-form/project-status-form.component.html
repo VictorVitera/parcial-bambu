@@ -1,0 +1,41 @@
+<div class="project-status-form">
+  <p class="field-label">Data de início:</p>
+  <input type="date" [(ngModel)]="clienteData.dataInicio" class="input-field" />
+
+  <p class="field-label">Data de fim:</p>
+  <input type="date" [(ngModel)]="clienteData.dataFim" class="input-field" />
+
+  <p class="field-label">Valor do projeto:</p>
+  <input type="number" [(ngModel)]="clienteData.valorProjeto" class="input-field" placeholder="Digite o valor do projeto" />
+
+  <StatusSelect
+    [label]="'Status'"
+    [options]="[
+      { label: 'Iniciado', value: 'iniciado' },
+      { label: 'Em andamento', value: 'emAndamento' },
+      { label: 'Finalizado', value: 'finalizado' }
+    ]"
+    [selectedValue]="clienteData.statusProjeto"
+    (valueChange)="onTipoClienteChange($event)"
+  >
+  </StatusSelect>
+
+  <div class="reunioes-section">
+    <p class="field-label">Reuniões:</p>
+    <div *ngFor="let reuniao of clienteData.reunioes; let i = index" class="reuniao-item">
+      <p>Reunião {{ i + 1 }}</p>
+      
+      <label>Data da reunião:</label>
+      <input type="date" [(ngModel)]="reuniao.data" class="input-field" />
+
+      <label>Hora:</label>
+      <input type="time" [(ngModel)]="reuniao.hora" class="input-field" />
+
+      <label>Descrição:</label>
+      <textarea [(ngModel)]="reuniao.descricao" class="textarea-field" placeholder="Descrição da reunião"></textarea>
+
+      <button (click)="removerReuniao(i)" class="remove-reuniao-button">Remover Reunião</button>
+    </div>
+    <button (click)="adicionarReuniao()" class="add-reuniao-button">Adicionar nova Reunião</button>
+  </div>
+</div>

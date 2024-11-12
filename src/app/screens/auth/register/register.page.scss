@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  --background: #728056; 
+}
+
+.container-image {
+  width: 90%;
+  margin-top: 8%;
+  margin-bottom: 15%;
+}
+
+.container-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.input {
+  margin-bottom: 15px;
+}
+
+WhiteButton {
+  --background: #ff6347; 
+  --color: white;
+  margin-top: 30px;
+  width: 100%;
+}
+
+ion-input::placeholder {
+  color: white;
+}

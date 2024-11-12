@@ -1,0 +1,24 @@
+<ion-content class="container">
+  <ion-img class="container-image" src="assets/icons/logo.png"></ion-img>
+  
+  <div class="container-form">
+    
+    <InputText [(ngModel)]="fullName" placeholder="Nome completo"></InputText>
+      
+    <InputTelefone [(ngModel)]="phone"  placeholder="Telefone"></InputTelefone>
+      
+    <InputText [(ngModel)]="company" placeholder="Empresa"></InputText>
+  
+    <InputCpf [(ngModel)]="cpf"  placeholder="CPF"></InputCpf>
+  
+    <InputText [(ngModel)]="cauregistro" placeholder="Registro CAU"></InputText>
+  
+    <InputEmail [(ngModel)]="email" placeholder="E-mail"></InputEmail>
+  
+    <InputSenha [(ngModel)]="password" placeholder="Escolha uma senha"></InputSenha>
+  
+    <InputText [(ngModel)]="notificationPreferences" placeholder="Preferências de Notificação"></InputText>
+
+    <WhiteButton [text]="'Cadastrar'" (click)="handleRegister()"></WhiteButton>
+  </div>
+</ion-content>

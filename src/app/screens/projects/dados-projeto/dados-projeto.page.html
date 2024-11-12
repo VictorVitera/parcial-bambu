@@ -1,0 +1,106 @@
+<ToolbarVoltar [title]="'Dados do Projeto'" [defaultHref]="'/dados-cliente'">
+</ToolbarVoltar>
+
+<ion-content class="dados-projeto-container">
+  <div class="container">
+
+    <InputLink placeholder="Título do projeto" [(ngModel)]="projetoData.titulo" [text]="'Nome do Projeto'"
+      keyboardType="text" autoCapitalize="none">
+    </InputLink>
+
+    <br>
+
+    <InputLink placeholder="Endereço do projeto" [(ngModel)]="projetoData.enderecoProjeto"
+      [text]="'Endereço do Projeto'" keyboardType="text" autoCapitalize="none">
+    </InputLink>
+
+    <br>
+
+
+    <DadosSelect [label]="'Tipo de Obra *'" [options]="obraOptions" [selectedValue]="projetoData.tipoObra"
+      (valueChange)="onValueChange($event)">
+    </DadosSelect>
+
+    <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime id="datetime"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+
+
+    <br>
+
+    <ion-item>
+      <ion-label position="stacked">Detalhes da obra</ion-label>
+      <br>
+      <ion-textarea [(ngModel)]="projetoData.detalhes" placeholder="Observações" auto-grow="true"
+        style="--background: #94a78e; --color: white; --padding-start: 15px; --border-radius: 30px;">
+      </ion-textarea>
+    </ion-item>
+
+    <br>
+
+    <ion-datetime-button datetime="datetimee"></ion-datetime-button>
+
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime id="datetimee"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+
+    <InputDatetime [(selectedDate)]="projetoData.startDate" [label]="'Data de Início'" [datetimeId]="'datetime'">
+    </InputDatetime>
+
+    <InputDatetime [(selectedDate)]="projetoData.endDate" [label]="'Data de Fim'" [datetimeId]="'datetimey'">
+    </InputDatetime>
+
+
+
+    <InputLink placeholder="Valor Total" [(ngModel)]="projetoData.orcamento" [text]="'Valor do Projeto'"
+      keyboardType="text" autoCapitalize="none" (ionBlur)="formatCurrency()" (ionInput)="onInputChange($event)">
+    </InputLink>
+
+    <br><br><br><br>
+
+    <ion-label class="section-label">Percentuais do valor para etapas</ion-label>
+
+    <ion-item>
+      <ion-label position="stacked">Etapa 1 - Estudo Preliminar</ion-label>
+      <br>
+      <ion-input type="number" [(ngModel)]="projetoData.percentStage1" placeholder="% do valor Estudo Preliminar">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Etapa 2 - Anteprojeto</ion-label><br>
+      <ion-input type="number" [(ngModel)]="projetoData.percentStage2" placeholder="% do valor Anteprojeto">
+      </ion-input>
+    </ion-item>
+
+    <br>
+
+    <ion-item>
+      <ion-label position="stacked">Etapa 3 - Projeto Legal</ion-label><br>
+      <ion-input type="number" [(ngModel)]="projetoData.percentStage3" placeholder="% do valor Projeto Legal">
+      </ion-input>
+    </ion-item>
+
+    <!-- Etapa 4 - Projeto Executivo -->
+    <ion-item>
+      <ion-label position="stacked">Etapa 4 - Projeto Executivo</ion-label><br>
+      <ion-input type="number" [(ngModel)]="projetoData.percentStage4" placeholder="% do valor Projeto Executivo">
+      </ion-input>
+    </ion-item>
+
+    <!-- Etapa 5 - Orçamento e Planejamento -->
+    <ion-item>
+      <ion-label position="stacked">Etapa 5 - Orçamento e Planejamento</ion-label><br>
+      <ion-input type="number" [(ngModel)]="projetoData.percentStage5" placeholder="% do valor O. e Planejamento">
+      </ion-input>
+    </ion-item>
+  </div>
+</ion-content>
+
+<ButtonLink [routerLink]="['/dados-ambiente']" [text]="'Salvar e continuar'" (click)="saveAndContinue()"></ButtonLink>

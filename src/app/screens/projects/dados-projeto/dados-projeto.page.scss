@@ -1,0 +1,46 @@
+
+ion-item {
+  --background: #ffffff;
+  --border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.section-label {
+  font-weight: bold;
+  margin-top: 20px;
+  color: #5a5a5a;
+}
+
+
+ion-label {
+  color: #728056;
+  font-weight: bold;
+}
+
+ion-input,
+ion-textarea,
+app-dados-select,
+ion-datetime {
+  --background: #728056;
+  --border-radius: 30px;
+  --padding-start: 15px;
+  color: white;
+}
+
+
+ion-toolbar {
+  --background: #f0f6ed;
+}
+
+ion-button {
+  margin-top: 20px;
+  --border-radius: 20px;
+  --background: #1a4209;
+}
+ion-textarea {
+  --padding-top: 50px; 
+  --padding-bottom: 50px;
+  --color: white; 
+  font-size: 16px;
+}
+

@@ -1,0 +1,47 @@
+<ion-content>
+  <ion-toolbar>
+    <ion-title>Sobre o Projeto</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Fechar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <div class="modal-content">
+    <ProjectStatusForm></ProjectStatusForm>
+
+    <!-- Segmento Etapas -->
+    <div *ngIf="selectedSegment === 'etapas'" class="segment-content">
+      <ProjectAccordion></ProjectAccordion>
+      <h2>• Situação atual</h2>
+      <p><strong>Etapa anterior:</strong> {{ projeto?.etapas?.etapaAnterior || 'Não disponível' }}</p>
+      <p><strong>Etapa atual:</strong> {{ projeto?.etapas?.etapaAtual || 'Não disponível' }}</p>
+      <p><strong>Próxima etapa:</strong> {{ projeto?.etapas?.proximaEtapa || 'Não disponível' }}</p>
+    </div>
+
+    <!-- Segmento Detalhes -->
+    <div *ngIf="selectedSegment === 'detalhes'" class="segment-content">
+      <h2>• Detalhes do Projeto</h2>
+      <p><strong>Endereço:</strong> {{ projeto?.endereco || 'Endereço não informado' }}</p>
+      <p><strong>Tipo de obra:</strong> {{ projeto?.tipoObra || 'Tipo de obra não informado' }}</p>
+      <p><strong>Valor do Projeto:</strong> {{ projeto?.valor | currency:'BRL' || 'Valor não informado' }}</p>
+    </div>
+
+    <!-- Segmento Ambientes -->
+    <div *ngIf="selectedSegment === 'ambientes'" class="segment-content">
+      <h2>• Ambientes</h2>
+      <div *ngIf="projeto?.ambientes && projeto.ambientes.length > 0; else noAmbientes">
+        <ion-list>
+          <ion-item *ngFor="let ambiente of projeto.ambientes">
+            <ion-label>
+              <h3>{{ ambiente.nome }}</h3>
+              <p>Tamanho: {{ ambiente.tamanho }} m²</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+      <ng-template #noAmbientes>
+        <p>Sem ambientes cadastrados.</p>
+      </ng-template>
+    </div>
+  </div>
+</ion-content>
